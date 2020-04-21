@@ -1,0 +1,38 @@
+label {
+	text-align: justify;
+}
+
+.imagesinstruct{
+    WIDTH: 690PX;
+    max-width: 80%;
+    padding-bottom: 15px;
+}
+
+.justo{
+	text-align: justify;
+}
+
+.centrado{
+	text-align:center!important;
+}
+
+.school-img {
+	width:150px;
+}
+
+.school-link > .title{
+	font-size:small;
+}
+
+.school-link{
+	color:#212529;
+}
+
+.bigger{ 
+ overflow: auto;
+}
+
+.header-content.bigger {
+    max-width: 700px!important;
+	padding-top: 100px;
+}

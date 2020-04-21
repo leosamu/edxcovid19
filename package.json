@@ -1,0 +1,21 @@
+{
+  "name": "edxcovid19",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cookie-parser": "~1.4.4",
+    "csv-parse": "^4.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-ipfilter": "^1.1.2",
+    "grunt": "^1.1.0",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "node-cron": "^2.0.3",
+    "nodemailer": "^4.0.1"
+  }
+}
