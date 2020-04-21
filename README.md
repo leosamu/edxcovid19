@@ -47,30 +47,55 @@ If you want to use it for your organization you will need a mysql server with 2 
 
 My apologies for the column names when i generated the tables did not expect this to go public ^^ feel free to translate them but if you do so you'll need to change the querys aswell.
 
-###  2. Configure the connection to the mysql server at config/database_conf.js
+###  2. Configure the connection to the mysql server at config/settings.js
 
-    const pool = mysql.createPool({    
-	    connectionLimit:  1000,    
-	    password:  'yourpassword',    
-	    user:  'youruser',    
-	    database:'licences',    
-	    host:'localhost',    
-	    port:'3306'    
-    });
+    settings.dbconf = {
+        connectionLimit: 10,
+        password: 'yourpassword',
+        user: 'youruser',
+        database:'licences',
+        host:'localhost',
+        port:'3306'
+    };
 
 
 
-### 3. Change the mail filter and messages
-Ok this is prolly not the most elegant way to do things but you can change the mail configuration at config/email.js.
-
+### 3. Change the mail filter and messages at config/settings.js
+settings.mail_confs = {
+    filter: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@.*upv.*.es$/,
+    mailFrom: '"MOOCS UPV" <examplemail@yourdomain.whatever>',
+    mailSubject: " Aquí tienes tu código de certificado verificado gratuito",
+    mailTextMain: "Recibes este correo porque te has registrado recientemente en el  programa de certificados verificados gratuitos para cursos MOOC, ofertado por la Universidad Politécnica de Valencia en colaboración  con edX y otras universidades.  A continuación encontrarás el código solicitado.\n",
+    mailTextFooter: "\nTienes las intruciones para utilizarlo en\nhttps://edxcovid19.webs.upv.es/faq.html",
+    smtphost:"your.smtp.server",
+    smtpport:"your.smtp.port",
+    smtpsecure:false //true for 465, false for other ports
+};
 here you can switch the allowed domain to request licences and the message that the users will receive.
 
-### 4. change the user messages:
-Like before i created at config/lang_conf.js a file with the popup messages the user will receive change it there.
+### 4. change the user messages also at config/settings.js:
+settings.lang = {
+    processing: 'Su petición se esta procesando, en breve recibirá un email con la licencia y los pasos a seguir para utilizarla',
+    invaliddomain: 'El dominio del correo no es válido, pero pongase en contacto con nosotros indicando que ha visto un grillo',
+    limitreached: 'Número máximo de licencias solicitadas, si precisa de más licencias pongase en contacto con nosotros a través de algúno de los medios indicados más abajo.'
+};
 
-### 5. change the task_rest urls:
+This will change the feedback messages that the users will receive after a request
+
+
+### 5. change the task_rest urls at config/settings.js:
 
 Ok there are 2 tasks that every 15 mins will check if there are new requests and will asign licences if there are avaiable and send messages you will need to set the valid route at config/task_rest.js
+
+settings.tasks_rest = {
+    assign : 'https://yourserver/licences/assign',
+    mailing : 'https://yourserver/licences/mailing'    
+}
+
+for testing purposes keep those inactive you can launch them manually and once all is set activate them switching **settings.periodic_tasks** to true
+
+### 5. change the max licences per mail config/settings.js:
+settings.maxlicences=5;
 
 And thats the last configuration step
  
