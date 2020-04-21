@@ -9,7 +9,6 @@ lerna-debug.log*
 #custom
 package-lock.json
 .npm
-.config
 .composer
 settings.js
 edxlicences/new/*.csv
