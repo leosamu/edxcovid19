@@ -47,7 +47,9 @@ If you want to use it for your organization you will need a mysql server with 2 
 
 My apologies for the column names when i generated the tables did not expect this to go public ^^ feel free to translate them but if you do so you'll need to change the querys aswell.
 
-###  2. Configure the connection to the mysql server at config/settings.js
+###  2. rename the file config/rename_to_settings.js to config/settings.js
+
+###  3. Configure the connection to the mysql server at config/settings.js
 
     settings.dbconf = {
         connectionLimit: 10,
@@ -60,7 +62,7 @@ My apologies for the column names when i generated the tables did not expect thi
 
 
 
-### 3. Change the mail filter and messages at config/settings.js
+### 4. Change the mail filter and messages at config/settings.js
 
     settings.mail_confs = {
         filter: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@.*upv.*.es$/,
@@ -75,7 +77,7 @@ My apologies for the column names when i generated the tables did not expect thi
     
 here you can switch the allowed domain to request licences and the message that the users will receive.
 
-### 4. change the user messages also at config/settings.js:
+### 5. change the user messages also at config/settings.js:
     settings.lang = {
         processing: 'Su petición se esta procesando, en breve recibirá un email con la licencia y los pasos a seguir para utilizarla',
         invaliddomain: 'El dominio del correo no es válido, pero pongase en contacto con nosotros indicando que ha visto un grillo',
@@ -85,7 +87,7 @@ here you can switch the allowed domain to request licences and the message that 
 This will change the feedback messages that the users will receive after a request
 
 
-### 5. change the task_rest urls at config/settings.js:
+### 6. change the task_rest urls at config/settings.js:
 
 Ok there are 2 tasks that every 15 mins will check if there are new requests and will asign licences if there are avaiable and send messages you will need to set the valid route at config/task_rest.js
 
@@ -98,22 +100,22 @@ for testing purposes keep those inactive you can launch them manually and once a
     
     settings.periodic_tasks=true
 
-### 5. change the max licences per mail config/settings.js:
+### 7. change the max licences per mail config/settings.js:
     settings.maxlicences=5;
 
 And thats the last configuration step
  
- ### 6. Once you have all configured install de node app with
+ ### 8. Once you have all configured install de node app with
 
      npm install
 
- ### 7. Then launch the webserver  
+ ### 9. Then launch the webserver  
 
     npm start
 
 Tthis will launch the server at ./bin/www and start to listen at the port 3000
 
-### 6. I have a server running and an empty database what now?
+### 10. I have a server running and an empty database what now?
 
 OKOK calm down, edX surelly sent you or your organization a csv file with the licences right? put that file at **/edxlicences/new** and then you have 2 options wait for a magic creature (crontask) to upload them to the mysql or you can just visit **http://yourhost/licences/load** this will launch a process that loads the csv file into the mysql and then moves the file from new to processed.
  
