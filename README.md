@@ -61,24 +61,26 @@ My apologies for the column names when i generated the tables did not expect thi
 
 
 ### 3. Change the mail filter and messages at config/settings.js
-settings.mail_confs = {
-    filter: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@.*upv.*.es$/,
-    mailFrom: '"MOOCS UPV" <examplemail@yourdomain.whatever>',
-    mailSubject: " Aquí tienes tu código de certificado verificado gratuito",
-    mailTextMain: "Recibes este correo porque te has registrado recientemente en el  programa de certificados verificados gratuitos para cursos MOOC, ofertado por la Universidad Politécnica de Valencia en colaboración  con edX y otras universidades.  A continuación encontrarás el código solicitado.\n",
-    mailTextFooter: "\nTienes las intruciones para utilizarlo en\nhttps://edxcovid19.webs.upv.es/faq.html",
-    smtphost:"your.smtp.server",
-    smtpport:"your.smtp.port",
-    smtpsecure:false //true for 465, false for other ports
-};
+
+    settings.mail_confs = {
+        filter: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@.*upv.*.es$/,
+        mailFrom: '"MOOCS UPV" <examplemail@yourdomain.whatever>',
+        mailSubject: " Aquí tienes tu código de certificado verificado gratuito",
+        mailTextMain: "Recibes este correo porque te has registrado recientemente en el  programa de certificados verificados gratuitos para cursos MOOC, ofertado por la Universidad Politécnica de Valencia en colaboración  con edX y otras universidades.  A continuación encontrarás el código solicitado.\n",
+        mailTextFooter: "\nTienes las intruciones para utilizarlo en\nhttps://edxcovid19.webs.upv.es/faq.html",
+        smtphost:"your.smtp.server",
+        smtpport:"your.smtp.port",
+        smtpsecure:false //true for 465, false for other ports
+    };
+    
 here you can switch the allowed domain to request licences and the message that the users will receive.
 
 ### 4. change the user messages also at config/settings.js:
-settings.lang = {
-    processing: 'Su petición se esta procesando, en breve recibirá un email con la licencia y los pasos a seguir para utilizarla',
-    invaliddomain: 'El dominio del correo no es válido, pero pongase en contacto con nosotros indicando que ha visto un grillo',
-    limitreached: 'Número máximo de licencias solicitadas, si precisa de más licencias pongase en contacto con nosotros a través de algúno de los medios indicados más abajo.'
-};
+    settings.lang = {
+        processing: 'Su petición se esta procesando, en breve recibirá un email con la licencia y los pasos a seguir para utilizarla',
+        invaliddomain: 'El dominio del correo no es válido, pero pongase en contacto con nosotros indicando que ha visto un grillo',
+        limitreached: 'Número máximo de licencias solicitadas, si precisa de más licencias pongase en contacto con nosotros a través de algúno de los medios indicados más abajo.'
+    };
 
 This will change the feedback messages that the users will receive after a request
 
@@ -87,15 +89,17 @@ This will change the feedback messages that the users will receive after a reque
 
 Ok there are 2 tasks that every 15 mins will check if there are new requests and will asign licences if there are avaiable and send messages you will need to set the valid route at config/task_rest.js
 
-settings.tasks_rest = {
-    assign : 'https://yourserver/licences/assign',
-    mailing : 'https://yourserver/licences/mailing'    
-}
+    settings.tasks_rest = {
+        assign : 'https://yourserver/licences/assign',
+        mailing : 'https://yourserver/licences/mailing'    
+    }
 
-for testing purposes keep those inactive you can launch them manually and once all is set activate them switching **settings.periodic_tasks** to true
+for testing purposes keep those inactive you can launch them manually and once all is set activate them switching
+    
+    settings.periodic_tasks=true
 
 ### 5. change the max licences per mail config/settings.js:
-settings.maxlicences=5;
+    settings.maxlicences=5;
 
 And thats the last configuration step
  
