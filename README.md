@@ -30,7 +30,7 @@ If you want to use it for your organization you will need a mysql server with 2 
     CREATE TABLE `solicitudes` (  
     `id` int(11) NOT NULL AUTO_INCREMENT,  
     `email` varchar(255) NOT NULL,  
-    `licencia` varchar(45) DEFAULT NULL,  
+    `licencia` int(11) DEFAULT NULL,  
     `fecha` date NOT NULL,  
     `enviada` date DEFAULT NULL,  
     PRIMARY KEY (`id`)  
