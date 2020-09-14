@@ -32,7 +32,9 @@ If you want to use it for your organization you will need a mysql server with 2 
     `email` varchar(255) NOT NULL,  
     `licencia` int(11) DEFAULT NULL,  
     `fecha` date NOT NULL,  
-    `enviada` date DEFAULT NULL,  
+    `enviada` date DEFAULT NULL, 
+    `countenvios` int(11) NOT NULL DEFAULT 0,
+    `anulada` int(11) NOT NULL DEFAULT 0,
     PRIMARY KEY (`id`)  
     ) ENGINE=InnoDB AUTO_INCREMENT=211 DEFAULT CHARSET=utf8;
     CREATE TABLE `licencias` (  
